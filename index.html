@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css" >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <header>
+     <section class="nav_bar">
+        <div class="logo">
+         <h1>Univert de <span>Freyah</span></h1>
+        </div>
+        <div class="nav">
+            <ul>
+            <li><a href="#">Bébé</a></li>
+            <li><a href="#">Fille</a></li>
+            <li><a href="#">Garçon</a></li>
+        </ul>
+        </div>
+        <img alt="menuhuberger" src="img/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+        class="menu">
+        <div class="items">
+            <a href="#"><span class="material-icons">favorite</span></a>
+            <a href="#"> <i class="material-icons">person</i></a>
+            <a href="#"><span class="material-icons">shopping_bag</span></a>
+        </div>
+     </section>
+    </header>
+    <main>
+<section class="about">
+    <img src="img/télécharger.jpeg">
+
+</section>
+<section class="Produits">
+    <div class="vetement"></div>
+    <div class="Couvert"></div>
+    <div class="accessoire"></div>
+</section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script>
+    const menuhuberger= document.querySelector(".menu")
+    const nav=document.querySelector(".nav")
+        menuhuberger.addEventListener('click',()=>{nav.classList.toggle('mobile-menu')})
+    
+</script>
+
+</html>

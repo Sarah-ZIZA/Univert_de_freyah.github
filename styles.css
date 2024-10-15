@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 100%;
+}
+
+header .nav_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  align-items: center;
+  box-sizing: border-box;
+}
+header .nav_bar span {
+  color: plum;
+}
+.logo {
+  font-size: 2.5rem;
+  color: bisque;
+  font-family: "Londrina Sketch", sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+}
+.nav li {
+  list-style: none;
+  margin: 16px;
+}
+.nav a {
+  font-size: 2rem;
+  color: bisque;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 15px;
+  position: relative;
+  font-family: "Londrina Sketch", sans-serif;
+}
+.nav a::before {
+  content: "";
+  top: 100%;
+  left: 0;
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: whitesmoke;
+  transition: 0.3s;
+}
+.nav a:active {
+  color: aqua;
+}
+.nav a:hover::before {
+  width: 100%;
+}
+.nav .items a img {
+  width: 20px;
+  height: 30px;
+  margin-left: 10px;
+  align-items: center;
+}
+main .about {
+  margin-top: 200px;
+}
+.about img {
+  width: 100%;
+}
+.nav_bar .menu {
+  width: 35px;
+  position: absolute;
+  float: left;
+  left: 10px;
+  top: 25px;
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .nav_bar .nav {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: rgba(128, 128, 128, 0.708);
+    backdrop-filter: blur(1px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Le menu est initialement hors écran */
+    transition: transform 0.3s ease-in-out;
+  }
+  header .nav_bar {
+    padding: 5px;
+  }
+  header .logo {
+    margin-left: 50px;
+  }
+
+  /* Lorsque la classe 'mobile-menu' est activée, le menu est visible */
+  .nav.mobile-menu {
+    transform: translateX(0); /* Le menu devient visible */
+  }
+  .nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav_bar .menu {
+    display: block;
+  }
+
+  .nav_bar .nav ul li {
+    margin: 25px 0;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 560px) {
+  .nav_bar .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav_bar .items a img {
+    width: 50px;
+  }
+}
+@media screen and (max-width: 505px) {
+  .nav_bar .items {
+    display: flex;
+    flex-direction: revert;
+    align-items: center;
+  }
+}
