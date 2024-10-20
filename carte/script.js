@@ -97,16 +97,18 @@ document.addEventListener("DOMContentLoaded", () => {
         resetBoard();
 
         if (matchedCards.length === cardsArray.length) {
-            alert("Vous avez trouvé toutes les paires !");
             gifs(); // Affiche le GIF de victoire
             ring(); // Joue l'audio
             lockBoard = true; // Empêche de retourner d'autres cartes
 
             // Changer la couleur de fond du corps
             document.body.style.backgroundColor = "whitesmoke"; // Mettre le fond en blanc
-            document.body.style.opacity = 0;
+
             // Masquer le plateau de jeu
             gameBoard.style.display = "none"; // Masquer complètement le plateau de jeu
+            // Afficher le message de victoire
+            const victoryMessage = document.getElementById("victory-message");
+            victoryMessage.style.display = "block"; // Affiche le message
         }
     }
 
