@@ -129,6 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
         victoryGifContainer.innerHTML = ""; // Vide le conteneur GIF
         gameBoard.style.display = "grid"; // Afficher le plateau de jeu
         document.body.style.backgroundColor = ""; // Réinitialiser la couleur de fond
+        const victoryMessage = document.getElementById("victory-message");
+        victoryMessage.style.display = "none";
         createBoard();
     });
 
