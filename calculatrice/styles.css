@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  max-width: 100%;
+  height: auto;
+}
+
+.modele {
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 850px;
+  z-index: -1;
+}
+
+.vue {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  padding: 10px;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: white;
+  width: 90%;
+  height: 150px;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+@media screen and (max-width: 506px) {
+  .modele {
+    width: 100%;
+  }
+}
+
+.lineone {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.linetwo {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.linethree {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.linefour {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 71%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.linefive {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lineone .btnsect1,
+.linetwo .btnsect2,
+.linethree .btnsect3,
+.linefour .btnsect4,
+.linefive .btnsect5 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lineone button,
+.linetwo button,
+.linethree button,
+.linefour button,
+.linefive button {
+  width: 100px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 10px;
+  border: none;
+  font-size: 2rem;
+  background-color: rgb(19, 17, 17);
+  color: white;
+}
+
+.lineone .btnAC,
+.lineone .btn-,
+.lineone .btnperc {
+  background-color: rgba(128, 128, 128, 0.742);
+}
+
+.lineone .btndiv,
+.linetwo .btnmult,
+.linethree .btnles,
+.linefour .btnplus,
+.linefive .btnequals {
+  background-color: rgba(255, 166, 0, 0.921);
+}
+
+.linefive .btnzero {
+  width: 240px;
+  height: 90px;
+  border-radius: 42.5%;
+}
+
+.material-icons {
+  font-size: 2rem !important;
+}
