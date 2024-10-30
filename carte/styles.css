@@ -16,10 +16,10 @@ body {
 }
 
 #game-board {
+    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(5, 100px);
     grid-gap: 10px;
-    margin: 0;
 }
 
 .card {
@@ -114,7 +114,7 @@ button {
 
 #timer.timer-running {
     position: absolute;
-    top: 92%;
+    top: 93%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
@@ -173,7 +173,7 @@ button {
 @media screen and (min-width: 700px) and (max-width: 1245px) {
     /* Corrigé ici */
     #timer.timer-running {
-        top: -100%;
+        margin-top: -105%;
         left: 0;
         transform: none;
         position: relative;
@@ -181,7 +181,7 @@ button {
         color: green;
     }
     #restart-button {
-        bottom: -15%;
+        bottom: 5%;
     }
 }
 
@@ -191,8 +191,9 @@ button {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 501px) and (max-width: 700px) {
     #game-board {
+        margin-top: 25% !important;
         display: grid;
         grid-template-columns: repeat(4, 100px);
         grid-gap: 10px;
@@ -202,6 +203,7 @@ button {
 
 @media screen and (max-width: 500px) {
     #game-board {
+        margin-top: 25%;
         display: grid;
         grid-template-columns: repeat(4, 80px);
         grid-gap: 10px;
