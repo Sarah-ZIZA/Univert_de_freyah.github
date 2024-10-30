@@ -145,6 +145,7 @@ button {
         justify-content: space-between;
         align-items: center;
         padding: 0 10px;
+        margin-bottom: 60%;
     }
     #timer.timer-running {
         top: 0;
@@ -163,6 +164,9 @@ button {
         /* Ajustez la distance par rapport au bas */
         left: 0;
         transform: none;
+    }
+    body {
+        height: auto;
     }
 }
 
