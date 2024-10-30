@@ -70,8 +70,8 @@ button {
     /* Juste pour le test */
     z-index: 1000;
     position: absolute;
-    margin-top: 40%;
     /* Ajustez la distance par rapport au bas */
+    margin-top: -20%;
     left: 50%;
     transform: translateX(-50%);
     /* Assurez-vous qu'il est au-dessus des autres éléments */
@@ -106,14 +106,76 @@ button {
     z-index: 100;
 }
 
+
+/* Style pendant le jeu */
+
+
+/* Style pendant le jeu */
+
+#timer.timer-running {
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    font-size: 1.5rem;
+    color: green;
+    z-index: 100;
+}
+
+
+/* Style après la fin de la partie */
+
+#timer.timer-finished {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
 @media screen and (min-width: 300px) and (max-width: 699px) {
+    .game-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+    #timer.timer-running {
+        top: 0;
+        left: 0;
+        transform: none;
+        position: relative;
+        order: 1;
+        font-size: 1.2rem;
+        color: green;
+    }
     #restart-button {
-        bottom: -40%;
+        position: relative;
+        order: 2;
+        font-size: 1rem;
+        margin-top: 0;
+        /* Ajustez la distance par rapport au bas */
+        left: 0;
+        transform: none;
     }
 }
 
 @media screen and (min-width: 700px) and (max-width: 1245px) {
     /* Corrigé ici */
+    #timer.timer-running {
+        top: -100%;
+        left: 0;
+        transform: none;
+        position: relative;
+        order: 1;
+        color: green;
+    }
     #restart-button {
         bottom: -15%;
     }

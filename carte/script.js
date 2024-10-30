@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let matchedCards = [];
     let lockBoard = false;
     let cardsArray = [];
+    let startTime;
+    let timerInterval;
 
     const ring = () => {
         const audio = new Audio();
@@ -22,13 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
         victoryGifContainer.appendChild(gif);
     };
 
+    // fonction pour le temps
+    function startTimer() {
+        const timerDisplay = document.getElementById("timer");
+        timerDisplay.classList.add("timer-running"); // Ajoute la classe de style initial
+        startTime = Date.now();
+        timerInterval = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+            const seconds = Math.floor((elapsedTime / 1000) % 60);
+            const minutes = Math.floor(elapsedTime / 1000 / 60);
+            timerDisplay.textContent = `Temps écoulé : ${minutes} min ${seconds} sec`;
+        }, 1000);
+    }
+
     // Charger le JSON
     function getCardsArray() {
         return fetch("cardsArray.json")
             .then((response) => response.json())
             .then((data) => {
-                cardsArray = data; // Mettez à jour cardsArray avec les données JSON
-                createBoard(); // Créez le plateau de jeu après avoir chargé les données
+                cardsArray = data; // Mise à jour cardsArray avec les données JSON
+                createBoard(); // Création du plateau de jeu après avoir chargé les données
             })
             .catch((error) =>
                 console.error("Erreur lors du chargement des cartes:", error)
@@ -36,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function createBoard() {
+        startTimer();
         gameBoard.style.display = "grid"; // S'assurer que le plateau de jeu est visible
         gameBoard.innerHTML = "";
         flippedCards = [];
@@ -97,8 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
         resetBoard();
 
         if (matchedCards.length === cardsArray.length) {
+            console.log("Partie terminée, arrêt du chronomètre"); // Vérification
+            clearInterval(timerInterval); // Arrête immédiatement le chronomètre
+
+            const timerDisplay = document.getElementById("timer");
+            timerDisplay.classList.remove("timer-running"); // Retire le style de jeu
+            timerDisplay.classList.add("timer-finished"); // Ajoute le style de fin de partie
+
             gifs(); // Affiche le GIF de victoire
             ring(); // Joue l'audio
+
             lockBoard = true; // Empêche de retourner d'autres cartes
 
             // Changer la couleur de fond du corps
@@ -125,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     restartButton.addEventListener("click", () => {
-        console.log("Le bouton de redémarrage a été cliqué."); // Message de débogage
+        document.getElementById("timer").textContent = ""; // Réinitialiser l'affichage du chronomètre
+        const timerDisplay = document.getElementById("timer");
+        timerDisplay.classList.remove("timer-finished"); // Ajoute le style de fin de partie
         victoryGifContainer.innerHTML = ""; // Vide le conteneur GIF
         gameBoard.style.display = "grid"; // Afficher le plateau de jeu
         document.body.style.backgroundColor = ""; // Réinitialiser la couleur de fond
