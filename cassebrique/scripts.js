@@ -1,7 +1,7 @@
 const button = document.querySelector(".boutton");
 
 button.addEventListener("click", () => {
-    document.location.href = "index.html";
+    document.location.href = "index1.html";
 });
 
 button.addEventListener("touchstart", () => {
