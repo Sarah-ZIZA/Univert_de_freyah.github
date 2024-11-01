@@ -7,8 +7,9 @@
 }
 
 body {
+  position: sticky;
   width: 100%;
-  height: auto;
+  height: 100vh;
   background: linear-gradient(
       217deg,
       rgba(255, 0, 0, 0.8),
