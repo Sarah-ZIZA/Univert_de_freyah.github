@@ -348,3 +348,15 @@ button:hover {
 p {
   color: #000;
 }
+button:focus {
+  outline: none;
+  touch-action: manipulation;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+.color-btn:hover {
+  transform: scale(1.1);
+}
