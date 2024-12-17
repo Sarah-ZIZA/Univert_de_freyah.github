@@ -66,6 +66,24 @@ function afficherProduitsParCategorie(produits) {
     });
   });
 }
+// Récupérer tous les boutons radio
+const slides = document.querySelectorAll('input[name="carousel"]');
+let currentIndex = 0; // Index du slide actif
+
+// Fonction pour passer au slide suivant
+function nextSlide() {
+  // Désélectionne le slide actuel
+  slides[currentIndex].checked = false;
+
+  // Passer au prochain slide ou revenir au premier
+  currentIndex = (currentIndex + 1) % slides.length;
+
+  // Sélectionne le nouveau slide
+  slides[currentIndex].checked = true;
+}
+
+// Lancer l'intervalle pour le défilement automatique
+setInterval(nextSlide, 5000); // 10 secondes
 
 // Afficher par défaut la section "vetement"
 document.addEventListener("DOMContentLoaded", () => {
