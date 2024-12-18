@@ -110,13 +110,15 @@
       </section>
     </main>
     <footer></footer>
+    <script>
+      const menuBurger = document.querySelector(".menu");
+      const nav = document.querySelector(".nav");
+
+      menuBurger.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+    </script>
   </body>
-  <script>
-    const menuhuberger = document.querySelector(".menu");
-    const nav = document.querySelector(".nav");
-    menuhuberger.addEventListener("click", () => {
-      nav.classList.toggle("mobile-menu");
-    });
-  </script>
+
   <script src="script.js"></script>
 </html>

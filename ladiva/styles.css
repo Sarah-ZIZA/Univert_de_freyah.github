@@ -26,6 +26,7 @@ header .nav_bar {
   align-items: center;
   box-sizing: border-box;
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
 
 .nav_bar .logo {
@@ -91,9 +92,9 @@ header .nav_bar span {
 
 @media screen and (max-width: 900px) {
   .nav_bar .nav {
+    position: fixed;
     top: 0;
     left: 0;
-    position: absolute;
     background-color: rgba(128, 128, 128, 0.708);
     backdrop-filter: blur(1px);
     width: 100%;
