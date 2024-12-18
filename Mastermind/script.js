@@ -23,6 +23,9 @@ const difficulties = {
   extreme: { longueur: 6, colors: 9, essais: 6 },
 };
 let remainingAttempts;
+let allowRepeats = true;
+let sonActive = true;
+let audio;
 
 const themes = {
   default: {
@@ -54,12 +57,23 @@ const themes = {
 function genererCombinaisonSecrete(longueur, maxCouleur) {
   combinaisonSecrete = [];
   const couleursRestreintes = couleursDisponibles.slice(0, maxCouleur);
-  for (let i = 0; i < longueur; i++) {
+
+  if (!allowRepeats && maxCouleur < longueur) {
+    console.error(
+      "Impossible de générer une combinaison sans répétition : trop peu de couleurs disponibles."
+    );
+    return;
+  }
+
+  while (combinaisonSecrete.length < longueur) {
     const couleurAleatoire =
       couleursRestreintes[
         Math.floor(Math.random() * couleursRestreintes.length)
       ];
-    combinaisonSecrete.push(couleurAleatoire.nom);
+
+    if (allowRepeats || !combinaisonSecrete.includes(couleurAleatoire.nom)) {
+      combinaisonSecrete.push(couleurAleatoire.nom);
+    }
   }
   console.log("Combinaison secrète :", combinaisonSecrete);
 }
@@ -126,9 +140,13 @@ function updateColorButtons(maxCouleur) {
     colorButtonsContainer.appendChild(button);
   }
 }
-
 function ajouterCouleur(couleur) {
   if (proposition.length < combinaisonSecrete.length) {
+    // Si la répétition n'est pas autorisée, vérifiez que la couleur n'est pas déjà présente
+    if (!allowRepeats && proposition.includes(couleur)) {
+      alert("Cette couleur a déjà été sélectionnée.");
+      return;
+    }
     proposition.push(couleur);
     console.log("Proposition actuelle :", proposition);
     const inputs = document.querySelectorAll(".color-input");
@@ -263,6 +281,7 @@ function appliquerTheme(themeName) {
     return;
   }
 
+  // Appliquer la couleur d'arrière-plan du corps
   document.body.style.background = theme.bodyColor;
 
   // Mettre à jour les logos des headers
@@ -271,16 +290,19 @@ function appliquerTheme(themeName) {
     logo.src = theme.logo;
   });
 
+  // Mettre à jour la couleur du tableau
   const board = document.querySelector(".board");
   if (board) {
     board.style.backgroundColor = theme.boardColor;
   }
 
+  // Mettre à jour l'image de fond
   const backgroundImageElement = document.querySelector(".background-image");
   if (backgroundImageElement) {
-    backgroundImageElement.style.backgroundImage = `url(${theme.backgroundImage})`;
+    backgroundImageElement.style.backgroundImage = `url("${theme.backgroundImage}")`;
   }
 
+  // Mettre à jour les styles des boutons
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
     button.style.backgroundColor = theme.buttonColor;
@@ -292,9 +314,12 @@ function appliquerTheme(themeName) {
       button.style.backgroundColor = theme.buttonColor;
     };
   });
+  // Jouer le son si le son est activé
+  jouerSon(themeName);
 
   console.log(`Thème "${themeName}" appliqué.`);
 }
+
 // Fonction pour afficher les règles du jeu
 function afficherRegles() {
   document.getElementById("popupRegles").style.display = "flex"; // Affiche le popup
@@ -304,9 +329,92 @@ function afficherRegles() {
 function fermerPopup() {
   document.getElementById("popupRegles").style.display = "none"; // Cache le popup
 }
+function afficherOptionRepetition() {
+  const optionContainer = document.querySelector(".repetition-option");
+
+  if (optionContainer) {
+    optionContainer.innerHTML = `
+      <label for="allowRepeats">Répétition_Couleurs</label>
+      <select id="allowRepeats" onchange="mettreAJourOptionRepetition()">
+        <option value="true" selected>Oui</option>
+        <option value="false">Non</option>
+      </select>
+    `;
+  } else {
+    console.error("L'élément .repetition-option n'a pas été trouvé.");
+  }
+}
+
+// Assurez-vous que la fonction est appelée après le chargement complet du DOM
+window.onload = () => {
+  afficherOptionRepetition(); // Assurez-vous que l'élément est présent avant l'appel
+};
+
+function mettreAJourOptionRepetition() {
+  const select = document.getElementById("allowRepeats");
+  allowRepeats = select.value === "true";
+  console.log("Répétition des couleurs autorisée :", allowRepeats);
+
+  // Regénérer la combinaison secrète en fonction de la nouvelle option
+  initialiserJeu("easy"); // Ou selon la difficulté actuelle
+}
+
+window.onload = function () {
+  jouerSon("fairy-tale-fantasy"); // Lancer le son par défaut
+};
+
+function jouerSon(themeName) {
+  if (!sonActive) return; // Si le son est désactivé, ne rien faire.
+
+  if (audio) {
+    audio.pause(); // Si un audio est en cours de lecture, on le met en pause
+    audio.currentTime = 0; // Remise à zéro de la lecture du son
+  }
+
+  audio = new Audio();
+
+  // Choix du son en fonction du thème
+  switch (themeName) {
+    case "Héros":
+      audio.src = "son/epic-story-of-courage-231643.mp3";
+      break;
+    case "dark":
+      audio.src = "son/_one-6779.mp3";
+      break;
+    case "fairy-tale-fantasy":
+    default:
+      audio.src = "son/fairy-tale-fantasy-123608.mp3"; // Thème par défaut
+  }
+
+  audio.play().catch((error) => {
+    console.error("Erreur de lecture du son :", error);
+  });
+}
+
+function toggleSound() {
+  sonActive = !sonActive; // Alterner l'état du son
+
+  const btn = document.getElementById("sound-toggle");
+
+  if (sonActive) {
+    btn.style.backgroundImage = "url('img/icons8-audio.gif')"; // Changer l'image pour activer le son
+    if (audio) {
+      audio.play().catch((error) => {
+        console.error("Erreur de lecture du son :", error);
+      });
+    }
+  } else {
+    btn.style.backgroundImage = "url('img/icons8-no-audio-50.png')"; // Changer l'image pour désactiver le son
+    if (audio) {
+      audio.pause(); // Arrêter le son
+    }
+  }
+}
 
 // Initialiser le jeu au chargement de la page
 window.onload = () => {
   initialiserJeu("easy");
   appliquerTheme("default");
+  afficherOptionRepetition();
+  toggleSound();
 };

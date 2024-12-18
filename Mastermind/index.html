@@ -10,13 +10,17 @@
     <title>Mastermind</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body oncontextmenu="return false">
     <!-- Page 1: Réglages -->
     <div id="page1" class="page">
       <header id="header-page1">
         <img src="img/Mastermind (1).png" alt="Mastermind Logo" />
       </header>
       <div class="theme-selector">
+        <button id="sound-toggle" onclick="toggleSound()">
+          <!-- L'image ou GIF par défaut sera ajouté ici -->
+        </button>
+
         <button class="btndefault" onclick="appliquerTheme('default')"></button>
         <button class="btnHéros" onclick="appliquerTheme('Héros')"></button>
         <button class="btndark" onclick="appliquerTheme('dark')"></button>
@@ -87,6 +91,7 @@
           <label for="maxCouleur">Couleurs possibles <br />(6-9) :</label>
           <input type="number" id="maxCouleur" value="6" min="6" max="9" />
         </div> -->
+        <div class="repetition-option"></div>
         <div class="menus">
           <button class="menu" onclick="changerPage('easy');">Débutant</button>
           <button class="menu" onclick="changerPage('normal');">
