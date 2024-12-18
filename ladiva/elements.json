@@ -1,0 +1,54 @@
+[
+  {
+    "element": "img/image1.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/vidéo1.mp4",
+    "type": "video"
+  },
+  {
+    "element": "img/image2.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image3.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image4.png",
+    "type": "photo"
+  },
+  {
+    "element": "img/image5.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image6.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image7.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image8.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image9.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image10.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image11.jpg",
+    "type": "photo"
+  },
+  {
+    "element": "img/image12.jpg",
+    "type": "photo"
+  }
+]

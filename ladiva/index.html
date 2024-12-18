@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portefolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <section class="nav_bar">
+        <div class="logo">
+          <h1>LA<span>DIVA</span></h1>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#pagephoto">Photos</a></li>
+            <li><a href="#pagevideo">Vidéo</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <img
+          alt="menuhuberger"
+          src="img/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+          class="menu"
+        />
+      </section>
+    </header>
+    <main>
+      <section class="Home">
+        <button id="backToTop" title="Go to top">
+          <img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios/50/collapse-arrow--v1.png"
+            alt="collapse-arrow--v1"
+          />
+        </button>
+
+        <div class="left"><img src="img/image_prensetation.jpg" /></div>
+        <div class="right">
+          <div class="about">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              porro possimus molestias omnis reprehenderit quis qui, explicabo
+              fuga obcaecati vero tenetur quibusdam labore temporibus expedita
+              ad odit asperiores reiciendis modi. Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Libero, aut reiciendis illum
+              explicabo non, in nobis vitae eaque ducimus quaerat mollitia esse
+              dolor optio, pariatur illo! Quod obcaecati voluptatem praesentium.
+            </p>
+          </div>
+          <div class="mensuration">
+            <h3>Mensuration:</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              accusantium asperiores aliquam quos quo, ipsa inventore magnam
+              debitis ipsam tenetur minima magni quaerat est culpa sit ipsum
+              nihil reprehenderit blanditiis.
+            </p>
+          </div>
+
+          <div class="socials_réseaux">
+            <ul class="social-icons">
+              <li>
+                <a
+                  class="linkedin"
+                  aria-label="LinkedIn"
+                  href=""
+                  target="_blank"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </li>
+              <li>
+                <a class="tiktok" aria-label="TikTok" href="" target="_blank">
+                  <i class="fab fa-tiktok"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="instagram"
+                  aria-label="Instagram"
+                  href=""
+                  target="_blank"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="pagephoto"></section>
+      <section id="pagevideo"></section>
+      <section id="contact">
+        <form class="form">
+          <div class="title">Prise de contact</div>
+          <input type="text" placeholder="email" class="input" />
+          <textarea placeholder="message"></textarea>
+
+          <button>Envoyez</button>
+        </form>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+  <script>
+    const menuhuberger = document.querySelector(".menu");
+    const nav = document.querySelector(".nav");
+    menuhuberger.addEventListener("click", () => {
+      nav.classList.toggle("mobile-menu");
+    });
+  </script>
+  <script src="script.js"></script>
+</html>
