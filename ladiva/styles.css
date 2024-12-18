@@ -29,6 +29,10 @@ header .nav_bar {
   transition: transform 0.3s ease-in-out;
 }
 
+.nav_bar .nav.active {
+  transform: translateX(0); /* Fait apparaître le menu */
+}
+
 .nav_bar .logo {
   font-size: 2rem;
   font-family: "Agu Display", serif;
@@ -93,6 +97,7 @@ header .nav_bar span {
 @media screen and (max-width: 900px) {
   .nav_bar .nav {
     position: fixed;
+
     top: 0;
     left: 0;
     background-color: rgba(128, 128, 128, 0.708);
