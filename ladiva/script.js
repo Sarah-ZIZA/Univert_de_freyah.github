@@ -24,7 +24,6 @@ backToTopButton.onclick = function () {
 };
 
 // Charger dynamiquement le fichier JSON
-// Charger dynamiquement le fichier JSON
 fetch("elements.json")
   .then((response) => {
     if (!response.ok) throw new Error("Erreur lors du chargement du JSON");
@@ -33,9 +32,10 @@ fetch("elements.json")
   .then((data) => {
     const pagePhoto = document.getElementById("pagephoto");
     const pageVideo = document.getElementById("pagevideo");
+    const gridWrapper = document.querySelector("#pageshooting .grid-wrapper");
 
     // Parcourir les données JSON
-    data.forEach((item) => {
+    data.forEach((item, index) => {
       if (item.type === "photo") {
         const img = document.createElement("img");
         img.src = item.element;
@@ -50,6 +50,32 @@ fetch("elements.json")
         video.style.width = "400px";
         video.style.margin = "5px";
         pageVideo.appendChild(video);
+      } else if (item.type === "shooting") {
+        // Créer un élément div pour chaque image
+        const div = document.createElement("div");
+
+        // Créer l'élément image
+        const img = document.createElement("img");
+        img.src = item.element; // Source de l'image
+        img.alt = "shooting"; // Texte alternatif
+
+        // Ajouter la classe "shooting-img" (vous pouvez l'utiliser pour du style CSS supplémentaire)
+        img.classList.add("shooting-img");
+
+        // Ajouter la classe de mise en page (wide, tall, etc.)
+        if (item.layout === "wide") {
+          div.classList.add("wide");
+        } else if (item.layout === "tall") {
+          div.classList.add("tall");
+        } else if (item.layout === "tall") {
+          div.classList.add("big");
+        }
+
+        // Ajouter l'image à la div
+        div.appendChild(img);
+
+        // Ajouter la div au conteneur .grid-wrapper
+        gridWrapper.appendChild(div);
       }
     });
 
@@ -59,6 +85,9 @@ fetch("elements.json")
     }
     if (pageVideo.children.length > 0) {
       pageVideo.style.display = "block";
+    }
+    if (pageshooting.children.length > 0) {
+      pageshooting.style.display = "block"; // Correction ici
     }
   })
   .catch((error) => {

@@ -8,12 +8,18 @@
     "type": "video"
   },
   {
+    "element": "img/vidéo2.mp4",
+    "type": "video"
+  },
+  {
     "element": "img/image2.jpg",
-    "type": "photo"
+    "type": "shooting",
+    "layout": "tall"
   },
   {
     "element": "img/image3.jpg",
-    "type": "photo"
+    "type": "shooting",
+    "layout": "tall"
   },
   {
     "element": "img/image4.png",
@@ -50,5 +56,46 @@
   {
     "element": "img/image12.jpg",
     "type": "photo"
+  },
+  {
+    "element": "img/image15.jpg",
+    "type": "shooting",
+    "layout": "tall"
+  },
+  {
+    "element": "img/image13.jpg",
+    "type": "shooting"
+  },
+  {
+    "element": "img/image14.jpg",
+    "type": "shooting"
+  },
+  {
+    "element": "img/image18.jpg",
+    "type": "shooting",
+    "layout": "tall"
+  },
+
+  {
+    "element": "img/image19.jpg",
+    "type": "shooting",
+    "layout": "tall"
+  },
+  {
+    "element": "img/image20.jpg",
+    "type": "shooting",
+    "layout": "big"
+  },
+  {
+    "element": "img/image16.jpg",
+    "type": "shooting"
+  },
+  {
+    "element": "img/image17.jpg",
+    "type": "shooting"
+  },
+  {
+    "element": "img/image21.jpg",
+    "type": "shooting"
   }
 ]
