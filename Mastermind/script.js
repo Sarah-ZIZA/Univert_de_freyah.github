@@ -379,7 +379,7 @@ function jouerSon(themeName) {
       audio.src = "son/epic-story-of-courage-231643.mp3";
       break;
     case "dark":
-      audio.src = "son/_one-6779.mp3";
+      audio.src = "son/one-6779.mp3";
       break;
     case "fairy-tale-fantasy":
     default:
