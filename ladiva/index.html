@@ -35,15 +35,6 @@
     </header>
     <main>
       <section class="Home">
-        <button id="backToTop" title="Go to top">
-          <img
-            width="30"
-            height="30"
-            src="https://img.icons8.com/ios/50/collapse-arrow--v1.png"
-            alt="collapse-arrow--v1"
-          />
-        </button>
-
         <div class="left"><img src="img/image_prensetation.jpg" /></div>
         <div class="right">
           <div class="about">
@@ -111,10 +102,17 @@
     </main>
     <footer></footer>
   </body>
+  <button id="backToTop" title="Go to top">
+    <img
+      width="30"
+      height="30"
+      src="https://img.icons8.com/ios/50/collapse-arrow--v1.png"
+      alt="collapse-arrow--v1"
+    />
+  </button>
   <script>
     const menuBurger = document.querySelector(".menu");
     const nav = document.querySelector(".nav");
-
     menuBurger.addEventListener("click", () => {
       nav.classList.toggle("active");
     });
