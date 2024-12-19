@@ -16,7 +16,6 @@
 body,
 html {
   overflow-x: hidden;
-  height: 100vh;
 }
 
 header .nav_bar {
@@ -157,6 +156,7 @@ header .nav_bar span {
 }
 .Home {
   display: flex;
+  min-height: 100vh;
 }
 
 .Home .left,
@@ -166,7 +166,6 @@ header .nav_bar span {
 
 .Home .left img {
   width: 90%;
-  height: auto;
 }
 
 .right {
@@ -273,6 +272,7 @@ header .nav_bar span {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  z-index: 9999 !important;
 }
 
 #backToTop:hover {
