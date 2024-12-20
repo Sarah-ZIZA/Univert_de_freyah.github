@@ -19,19 +19,36 @@
           <h1>LA<span>DIVA</span></h1>
         </div>
         <div class="nav">
+          <span class="close">
+            <img
+              width="30"
+              height="30"
+              src="https://img.icons8.com/ios-glyphs/30/delete-sign.png"
+              alt="delete-sign"
+            />
+          </span>
+
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#pagephoto">Bohème</a></li>
-            <li><a href="#pageshooting">Shooting</a></li>
-            <li><a href="#pagevideo">Vidéo</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#pagephoto" class="nav-link">Bohème</a></li>
+            <li><a href="#pageshooting" class="nav-link">Shooting</a></li>
+            <li><a href="#pagevideo" class="nav-link">Vidéo</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
         </div>
         <img
-          alt="menuhuberger"
-          src="img/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+          alt="menu burger"
+          width="45"
+          height="45"
+          src="https://img.icons8.com/ios-filled/50/menu--v1.png"
+          alt="menu--v1"
           class="menu"
         />
+        <!-- <img
+          alt="menu burger"
+          src="img/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+          class="menu"
+        /> -->
       </section>
     </header>
     <main>
@@ -76,14 +93,19 @@
                 <a
                   class="facebook"
                   aria-label="Facebook"
-                  href=""
+                  href="https://www.facebook.com/onelie.onewin.7?mibextid=wwXIfr"
                   target="_blank"
                 >
                   <i class="fab fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a class="tiktok" aria-label="TikTok" href="" target="_blank">
+                <a
+                  class="tiktok"
+                  aria-label="TikTok"
+                  href="https://www.tiktok.com/@pernelle3?_t=8sNKIfOFAUn&_r=1"
+                  target="_blank"
+                >
                   <i class="fab fa-tiktok"></i>
                 </a>
               </li>
@@ -91,7 +113,7 @@
                 <a
                   class="instagram"
                   aria-label="Instagram"
-                  href=""
+                  href="https://www.instagram.com/i.am.pernelle/profilecard/?igsh=bzVlejB3aWFveWF3"
                   target="_blank"
                 >
                   <i class="fab fa-instagram"></i>
@@ -116,7 +138,10 @@
         </form>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="line"></div>
+      <p>&copy; 2024 Create by Sarah_ZIZA</p>
+    </footer>
     <button id="backToTop" title="Go to top">
       <img
         width="30"
@@ -127,11 +152,30 @@
     </button>
   </body>
   <script>
-    const menuBurger = document.querySelector(".menu");
-    const nav = document.querySelector(".nav");
+    const menuBurger = document.querySelector(".menu"); // Menu burger icon
+    const nav = document.querySelector(".nav"); // Navigation menu
+    const closeBtn = document.querySelector(".close"); // Close button
+    const navLinks = document.querySelectorAll(".nav-link"); // Navigation links
+
+    // Ouvrir ou fermer le menu avec le menu burger
     menuBurger.addEventListener("click", () => {
       nav.classList.toggle("active");
+      // menuBurger.classList.add("hidden");
+    });
+
+    // Fermer le menu avec la croix
+    closeBtn.addEventListener("click", () => {
+      nav.classList.remove("active");
+      // menuBurger.classList.add("hidden");
+    });
+
+    // Fermer le menu quand un lien est cliqué
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        // menuBurger.classList.add("hidden");
+      });
     });
   </script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </html>
