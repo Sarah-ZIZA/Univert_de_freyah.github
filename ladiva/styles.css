@@ -175,6 +175,7 @@ header .nav_bar span {
   justify-content: flex-start;
   margin-top: 2%;
   text-align: center;
+  margin-right: 5px;
 }
 
 .about,
