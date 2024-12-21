@@ -3,7 +3,7 @@ let combinaisonSecrete = [];
 let proposition = [];
 let historiqueResultat = [];
 let nombreEssais = 0;
-
+// constante des couleurs disponible
 const couleursDisponibles = [
   { nom: "rouge", couleur: "red" },
   { nom: "bleu", couleur: "blue" },
@@ -15,18 +15,19 @@ const couleursDisponibles = [
   { nom: "orange", couleur: "orange" },
   { nom: "rose", couleur: "pink" },
 ];
-
+//constante des difficultées
 const difficulties = {
   easy: { longueur: 4, colors: 6, essais: 12 },
   normal: { longueur: 4, colors: 7, essais: 10 },
   hard: { longueur: 5, colors: 8, essais: 8 },
   extreme: { longueur: 6, colors: 9, essais: 6 },
 };
+// autre variable de statut de son,d'audio,de repetétion et tentative restante
 let remainingAttempts;
 let allowRepeats = true;
 let sonActive = true;
 let audio;
-
+//constante de themes
 const themes = {
   default: {
     bodyColor: "linear-gradient(to bottom right, #4e54c8, #8f94fb)",
@@ -53,7 +54,7 @@ const themes = {
     buttonHoverColor: "#000000A8",
   },
 };
-
+//fonction pour générer la combinaison aléatoire des couleurs
 function genererCombinaisonSecrete(longueur, maxCouleur) {
   combinaisonSecrete = [];
   const couleursRestreintes = couleursDisponibles.slice(0, maxCouleur);
@@ -77,18 +78,25 @@ function genererCombinaisonSecrete(longueur, maxCouleur) {
   }
   console.log("Combinaison secrète :", combinaisonSecrete);
 }
-
+//fonction d'initialisation du jeu
 function initialiserJeu(difficulty = "easy") {
   const params = difficulties[difficulty];
   genererCombinaisonSecrete(params.longueur, params.colors);
   proposition = [];
   historiqueResultat = [];
   remainingAttempts = params.essais;
+  // l'option de répétition est mise à jour
+  const select = document.getElementById("allowRepeats");
+  if (select) {
+    allowRepeats = select.value === "true";
+  }
+
   updateAttemptsDisplay();
   document.querySelector(".vue").innerHTML = "";
   afficherInputsProposition(params.longueur);
   updateColorButtons(params.colors);
 }
+//fonction de mise a jour de tentative restante
 function updateAttemptsDisplay() {
   const attemptsContainer = document.querySelector("#attempts-display");
   if (!attemptsContainer) {
@@ -102,7 +110,7 @@ function updateAttemptsDisplay() {
     "#attempts-display"
   ).textContent = `Tentatives restantes : ${remainingAttempts}`;
 }
-
+//fonctions d'affichge de proposition de couleur
 function afficherInputsProposition(longueur) {
   const guessSection = document.querySelector(".guess-section");
   guessSection.innerHTML =
@@ -116,13 +124,13 @@ function afficherInputsProposition(longueur) {
     guessSection.appendChild(input);
   }
 }
-
+//fonction qui permet de changer la page en fonction du niveau de difficulté choisi
 function changerPage(difficulty) {
   document.getElementById("page1").style.display = "none";
   document.getElementById("page2").style.display = "block";
   initialiserJeu(difficulty);
 }
-
+//fonction mis a jours des boutons de couleurs
 function updateColorButtons(maxCouleur) {
   const colorButtonsContainer = document.getElementById("color-buttons");
 
@@ -140,6 +148,7 @@ function updateColorButtons(maxCouleur) {
     colorButtonsContainer.appendChild(button);
   }
 }
+//fonction d'ajout de couleur
 function ajouterCouleur(couleur) {
   if (proposition.length < combinaisonSecrete.length) {
     // Si la répétition n'est pas autorisée, vérifiez que la couleur n'est pas déjà présente
@@ -156,7 +165,7 @@ function ajouterCouleur(couleur) {
     alert("Vous avez déjà sélectionné suffisamment de couleurs.");
   }
 }
-
+//fonction qui recuperer la valeur en fonction du nombre d'essaie
 function RecupererValeur() {
   if (proposition.length !== combinaisonSecrete.length) {
     alert(`Veuillez sélectionner ${combinaisonSecrete.length} couleurs.`);
@@ -199,7 +208,7 @@ function RecupererValeur() {
   proposition = [];
   afficherInputsProposition(combinaisonSecrete.length);
 }
-
+//fonction de comparaison des propositions
 function comparerCombinaisons(proposition, combinaisonSecrete) {
   let bienplaces = 0;
   let malplaces = 0;
@@ -221,7 +230,7 @@ function comparerCombinaisons(proposition, combinaisonSecrete) {
 
   return { bienplaces, malplaces };
 }
-
+//fonction d'historique des tentative
 function afficherHistorique() {
   const vue = document.querySelector(".vue");
   vue.innerHTML = "";
@@ -239,7 +248,7 @@ function afficherHistorique() {
     } bien placés, ${tentative.malplaces} mal placés.</p>`;
   });
 }
-
+// fonction personnalisation popup en fonction de si victoire ou défaite
 function afficherMessage(message, isWin) {
   const modal = document.getElementById("modal");
   const modalMessage = document.getElementById("modal-message");
@@ -249,18 +258,23 @@ function afficherMessage(message, isWin) {
     isWin ? "Gagné" : "Perdu"
   }" style="width:200px; height:auto;">`;
   modal.style.display = "block";
+  // Remet à jour l'état de répétition des couleurs
+  document.getElementById("modal").addEventListener("click", () => {
+    closeModal();
+    mettreAJourOptionRepetition(); // Actualise la répétition des couleurs
+  });
 }
-
+//fonction pour fermer le popup de regle du jeux
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
-
+//fonction recommencer le jeu en cas d'abondont
 function recommencerJeu() {
   document.getElementById("page1").style.display = "block";
   document.getElementById("page2").style.display = "none";
   initialiserJeu();
 }
-
+//fonction effacer les propposition
 function effacerProposition() {
   if (proposition.length > 0) {
     const removedColor = proposition.pop(); // Supprimer la dernière couleur
@@ -329,6 +343,7 @@ function afficherRegles() {
 function fermerPopup() {
   document.getElementById("popupRegles").style.display = "none"; // Cache le popup
 }
+//fonction pour affichez les d'options de repétion
 function afficherOptionRepetition() {
   const optionContainer = document.querySelector(".repetition-option");
 
@@ -354,15 +369,17 @@ function mettreAJourOptionRepetition() {
   const select = document.getElementById("allowRepeats");
   allowRepeats = select.value === "true";
   console.log("Répétition des couleurs autorisée :", allowRepeats);
-
-  // Regénérer la combinaison secrète en fonction de la nouvelle option
-  initialiserJeu("easy"); // Ou selon la difficulté actuelle
+  // Ne réinitialisez que si le jeu est actif
+  if (remainingAttempts > 0) {
+    // Regénérer la combinaison secrète en fonction de la nouvelle option
+    initialiserJeu("easy"); // Ou selon la difficulté actuelle
+  }
 }
 
 window.onload = function () {
   jouerSon("fairy-tale-fantasy"); // Lancer le son par défaut
 };
-
+//fonction de son
 function jouerSon(themeName) {
   if (!sonActive) return; // Si le son est désactivé, ne rien faire.
 
@@ -390,7 +407,7 @@ function jouerSon(themeName) {
     console.error("Erreur de lecture du son :", error);
   });
 }
-
+//fonction pour le bouton du son
 function toggleSound() {
   sonActive = !sonActive; // Alterner l'état du son
 
