@@ -103,6 +103,10 @@ header .nav_bar span {
   position: absolute;
   display: none;
 }
+.namemenu {
+  display: none;
+  position: absolute;
+}
 
 @media screen and (max-width: 900px) {
   .nav_bar .nav {
@@ -135,6 +139,7 @@ header .nav_bar span {
     position: relative;
     left: 0;
     width: 45px;
+    z-index: 2;
   }
 
   .nav_bar .nav ul li {
@@ -155,6 +160,13 @@ header .nav_bar span {
 
   .close span:hover {
     transform: scale(1.1); /* Petit effet de zoom */
+  }
+  .namemenu {
+    display: block;
+    position: relative;
+    left: 0;
+    width: 45px;
+    z-index: 1;
   }
 }
 
