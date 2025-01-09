@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fonction pour récupérer les données de "chiffres.json"
   function getChiffres() {
-    return fetch("/json/provinces.json")
+    return fetch("../json/provinces.json")
       .then((response) => response.json())
       .then((data) => {
         chiffresData = data; // Stocker les données dans le tableau
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showCurrentImage() {
     if (chiffresData.length > 0) {
       const imageToShow = chiffresData[currentIndex]; // Obtenir l'image actuelle
-      mainImage.src = `/images/${imageToShow.image}.png`; // Met à jour la source de l'image affichée
+      mainImage.src = `../images/${imageToShow.image}.png`; // Met à jour la source de l'image affichée
       mainImage.alt = `Image ${imageToShow.id}`; // Met à jour l'attribut alt
       audioPlayer.src = imageToShow.sound; //mettre a jour le son
     }
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   // ------------------- Modal Button Events -------------------
   confirmNext.addEventListener("click", () => {
-    window.location.href = "/index.html";
+    window.location.href = "../index.html";
     // hideModal();
     console.log("Passage à l'étape suivante !");
     // Ajouter votre logique pour passer à l'étape suivante ici
