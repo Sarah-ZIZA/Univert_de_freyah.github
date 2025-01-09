@@ -14,7 +14,7 @@
   {
     "id": "3",
     "image": "G3",
-    "sound": "/sons/G3.mp3",
+    "sound": "../sons/G3.mp3",
     "title": "Titre 1"
   },
   {
