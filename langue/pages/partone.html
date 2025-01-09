@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylepart.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="content btn">
+      <button onclick="window.location.href='/index.html'">Retour</button>
+    </div>
+    <section class="number-Cart">
+      <div class="carts">
+        <img id="mainImage" src="images/default.png" alt="Default Image" />
+        <audio id="audioPlayer" controls style="display: none"></audio>
+        <!-- Éléments audio masqué -->
+        <a id="soundLink" class="btn-on-image">
+          <span class="material-icons" style="width: 200px">volume_up</span>
+        </a>
+      </div>
+      <div class="buttoms">
+        <button class="btn1">
+          <span class="material-icons">arrow_back_ios</span>
+        </button>
+        <button class="btn2">
+          <span class="material-icons">arrow_forward_ios</span>
+        </button>
+      </div>
+    </section>
+    <div id="modal-next-step" class="modal">
+      <div class="modal-content">
+        <h2>Vous avez terminé !</h2>
+        <p>Voulez-vous passer à l'étape suivante ?</p>
+        <div class="modal-buttons">
+          <button id="confirm-next">Oui</button>
+          <button id="cancel-next">Non</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/script.js"></script>
+</html>

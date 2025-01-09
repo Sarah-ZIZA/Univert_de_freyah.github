@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+    rgba(2, 246, 43, 0.5),
+    rgba(255, 255, 0, 0.846),
+    rgba(0, 0, 255, 0.5)
+  );
+  background-blend-mode: overlay;
+  /* Mélange le dégradé avec l'image absolue */
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("images/RAMBA.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  z-index: -1;
+}
+
+@media (max-width: 1100px) {
+  .background {
+    background-size: contain !important;
+    background-position: initial;
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.btn button {
+  background-color: transparent;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 5px;
+  border-color: black;
+  /* box-shadow: 10px 5px 5px red; */
+}
+.content {
+  display: flex;
+  gap: 15px;
+}
