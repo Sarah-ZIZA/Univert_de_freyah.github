@@ -26,7 +26,7 @@
   {
     "id": "5",
     "image": "M5",
-    "sound": "/sons/mai.mp3",
+    "sound": "../sons/mai.mp3",
     "title": "Titre 1"
   },
   {
