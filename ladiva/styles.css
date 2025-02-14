@@ -528,3 +528,24 @@ footer .line {
 footer p {
   text-align: center;
 }
+.clickable {
+  cursor: pointer; /* Indiquer que l'image est cliquable */
+}
+#imageModal {
+  display: none; /* Par défaut, caché */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#modalImage {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
