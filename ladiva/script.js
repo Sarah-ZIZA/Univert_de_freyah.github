@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Charger dynamiquement le fichier JSON
   fetch("elements.json")
     .then((response) => {
       if (!response.ok) throw new Error("Erreur lors du chargement du JSON");
@@ -34,12 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const pagePhoto = document.getElementById("pagephoto");
       const pageVideo = document.getElementById("pagevideo");
       const gridWrapper = document.querySelector("#pageshooting .grid-wrapper");
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
 
       // Parcourir les données JSON
-      data.forEach((item, index) => {
+      data.forEach((item) => {
         if (item.type === "photo") {
           const img = document.createElement("img");
           img.src = item.element;
+          img.classList.add("clickable"); // Correctement ajouter la classe
           img.alt = "Photo";
           img.style.width = "400px";
           img.style.margin = "5px";
@@ -52,31 +54,43 @@ document.addEventListener("DOMContentLoaded", () => {
           video.style.margin = "5px";
           pageVideo.appendChild(video);
         } else if (item.type === "shooting") {
-          // Créer un élément div pour chaque image
           const div = document.createElement("div");
-
-          // Créer l'élément image
           const img = document.createElement("img");
-          img.src = item.element; // Source de l'image
-          img.alt = "shooting"; // Texte alternatif
+          img.src = item.element;
+          img.alt = "shooting";
+          img.classList.add("clickable");
 
-          // Ajouter la classe "shooting-img" (vous pouvez l'utiliser pour du style CSS supplémentaire)
-          img.classList.add("shooting-img");
-
-          // Ajouter la classe de mise en page (wide, tall, etc.)
+          // Ajouter la classe de mise en page (wide, tall, big, etc.)
           if (item.layout === "wide") {
             div.classList.add("wide");
           } else if (item.layout === "tall") {
             div.classList.add("tall");
-          } else if (item.layout === "tall") {
+          } else if (item.layout === "big") {
             div.classList.add("big");
           }
 
-          // Ajouter l'image à la div
           div.appendChild(img);
-
-          // Ajouter la div au conteneur .grid-wrapper
           gridWrapper.appendChild(div);
+        }
+      });
+
+      // Sélectionner à nouveau les images une fois qu'elles sont ajoutées au DOM
+      const images = document.querySelectorAll(".clickable");
+
+      images.forEach((img) => {
+        img.addEventListener("click", () => {
+          modal.style.display = "flex"; // Afficher le modal
+          modalImg.src = img.src; // Mettre l'image cliquée dans le modal
+        });
+      });
+
+      modalImg.addEventListener("click", () => {
+        modal.style.display = "none"; // Fermer le modal lorsque l'image est cliquée
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none"; // Fermer le modal si on clique en dehors de l'image
         }
       });
 
@@ -86,9 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (pageVideo.children.length > 0) {
         pageVideo.style.display = "block";
-      }
-      if (pageshooting.children.length > 0) {
-        pageshooting.style.display = "block"; // Correction ici
       }
     })
     .catch((error) => {
@@ -118,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showSection(targetSection);
     });
   });
-
   // Initialisation : cacher toutes les sections
   showSection(""); // Pas de section affichée au chargement
 });
